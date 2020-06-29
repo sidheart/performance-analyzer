@@ -34,6 +34,7 @@ jobs:
       working-directory: ./tmp/pa
       run: ./gradlew updateShas
     - name: Build Artifacts
+      working-directory: ./tmp/pa
       run: |
         ./gradlew build buildDeb buildRpm --refresh-dependencies -Dbuild.snapshot=false -x javadoc
         mkdir artifacts
@@ -52,6 +53,7 @@ jobs:
         aws-region: us-west-2
 
     - name: Upload Artifacts to S3
+      working-directory: ./tmp/pa
       run: |
         s3_path=s3://artifacts.opendistroforelasticsearch.amazon.com/downloads
         aws s3 cp artifacts/*.zip $s3_path/elasticsearch-plugins/performance-analyzer/
