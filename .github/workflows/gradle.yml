@@ -1,11 +1,11 @@
 name: Java CI
 
 on: 
-  push: 
-    branches: 
+  push:
+    branches:
       - master
   pull_request:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -50,4 +50,4 @@ jobs:
       run: ./gradlew build
     - name: Run Integration Tests
       working-directory: ./tmp/pa
-      run: ./gradlew integTest -Dtests.enableIT=true -Dtests.useDockerCluster=true
+      run: ./gradlew integTest -Dtests.enableIT=true -Dtests.useDockerCluster=true -d -S
